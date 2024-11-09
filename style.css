@@ -1,0 +1,306 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* Container Styling */
+  .app-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #d9c3ff, #ffebcc);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    color: #555;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ff6f61;
+  }
+  
+  /* Dark Mode Toggle */
+  #dark-mode-toggle {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    background: linear-gradient(90deg, #ff7e67, #ff4c68);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  #dark-mode-toggle:hover {
+    background: linear-gradient(90deg, #ff4c68, #ff1e39);
+  }
+  
+  /* Note Controls */
+  .note-controls {
+    display: flex;
+    gap: 15px;
+    margin: 1rem 0;
+  }
+  
+  .note-controls input,
+  .note-controls select {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    font-size: 1rem;
+    transition: border 0.3s;
+  }
+  
+  .note-controls input:focus,
+  .note-controls select:focus {
+    border-color: #ff6f61;
+  }
+  
+  /* Add Note Section */
+  .add-note {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  .add-note input,
+  .add-note textarea {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s;
+  }
+  
+  .add-note input:focus,
+  .add-note textarea:focus {
+    border-color: #ff6f61;
+  }
+  
+  .add-note textarea {
+    resize: none;
+    height: 120px;
+  }
+  
+  #add-note-btn {
+    padding: 12px;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6363, #ff9966);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+  }
+  
+  #add-note-btn:hover {
+    background: linear-gradient(135deg, #ff4b4b, #ff7854);
+    transform: translateY(-2px);
+  }
+  
+  /* Notes Container */
+  #notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  /* Note Card */
+  .note {
+    position: relative;
+    width: 220px;
+    padding: 15px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ffe5d8, #fff1e0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .note:hover {
+    transform: translateY(-5px);
+  }
+  
+  .note h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: #ff6f61;
+  }
+  
+  .note p {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.5;
+  }
+  
+  .note .note-date {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 10px;
+  }
+  
+  .note .note-tags span {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    background-color: #6c63ff;
+    color: #fff;
+    margin: 2px;
+  }
+  
+  /* Buttons on Note */
+  .edit-btn,
+  .delete-btn,
+  .archive-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #ff6363;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-btn {
+    right: 70px;
+    background-color: #ffbd44;
+  }
+  
+  .edit-btn:hover {
+    background-color: #ff9a00;
+  }
+  
+  .delete-btn:hover {
+    background-color: #d9534f;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .close-btn {
+    color: #ff6363;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close-btn:hover,
+  .close-btn:focus {
+    color: #ff4c68;
+  }
+  
+  /* Dark Mode Styling */
+  .dark-mode {
+    background-color: #1e1e2e;
+    color: #f4f4f9;
+  }
+  
+  .dark-mode .note {
+    background: linear-gradient(135deg, #393d4e, #2e2d3e);
+  }
+  
+  .dark-mode .note-tags span {
+    background-color: #ff7854;
+  }
+  
+  /* Common Button Styles */
+  .button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  /* Save and Add Other Notes Button */
+  #save-notes-btn,
+  #add-other-notes-btn {
+    padding: 10px 15px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  #save-notes-btn {
+    background: linear-gradient(135deg, #ff6363, #ff9966);
+  }
+  
+  #save-notes-btn:hover {
+    background: linear-gradient(135deg, #ff4b4b, #ff7854);
+    transform: translateY(-2px);
+  }
+  
+  #add-other-notes-btn {
+    background: linear-gradient(135deg, #6c63ff, #8a78ff);
+  }
+  
+  #add-other-notes-btn:hover {
+    background: linear-gradient(135deg, #514ac5, #7a77ff);
+    transform: translateY(-2px);
+  }
+  
+  /* Archived Notes Section */
+  #archived-notes-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Animation for buttons */
+  .archive-btn:hover,
+  .export-btn:hover,
+  .import-btn:hover {
+    transform: scale(1.05);
+  }
+  

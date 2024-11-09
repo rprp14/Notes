@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Notes App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Notes App</h1>
+            <button id="dark-mode-toggle">Dark Mode</button>
+        </header>
+        <div class="note-controls">
+            <input type="text" id="search-input" placeholder="Search notes...">
+            <select id="tag-filter">
+                <option value="">Filter by Tag</option>
+            </select>
+            <button id="save-notes-btn">Show Saved Notes</button>
+            <button id="add-other-notes-btn">Add Other Notes</button>
+            
+        </div>
+        <div class="add-note">
+            <input type="text" id="note-title" placeholder="Title" required>
+            <textarea id="note-content" placeholder="Write your note..." required></textarea>
+            <input type="text" id="note-tag" placeholder="Add tags (comma-separated)">
+            <button id="add-note-btn">Add Note</button>
+        </div>
+        <div id="notes-container"></div>
+        <div id="archived-notes-container">
+            <h2>Archived Notes</h2>
+        </div>
+    </div>
+
+    <!-- Modal for Saved Notes -->
+    <div id="saved-notes-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Saved Notes</h2>
+            <div id="saved-notes-container"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
